@@ -1,0 +1,240 @@
+<style>
+/* ===== FLIX CINEMATIC ANIMATIONS ===== */
+
+body {
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(214,181,109,.10), transparent 18%),
+    radial-gradient(circle at 70% 30%, rgba(120,70,200,.12), transparent 20%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,.04), transparent 15%);
+  animation: ambientMove 18s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes ambientMove {
+  0% {
+    transform: translate(-2%, -2%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(3%, 2%) rotate(3deg) scale(1.05);
+  }
+  100% {
+    transform: translate(-1%, 4%) rotate(-2deg) scale(1.08);
+  }
+}
+
+/* Logo */
+.logo {
+  animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+  from {
+    text-shadow: 0 0 5px rgba(214,181,109,.2);
+  }
+  to {
+    text-shadow:
+      0 0 10px rgba(214,181,109,.45),
+      0 0 30px rgba(214,181,109,.15);
+  }
+}
+
+/* Hero entrance */
+.hero-content {
+  animation: heroEnter 1.2s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Eyebrow */
+.eyebrow {
+  animation: fadeUp 1s .15s both;
+}
+
+.hero h1 {
+  animation: fadeUp 1s .3s both;
+}
+
+.hero p {
+  animation: fadeUp 1s .45s both;
+}
+
+.buttons {
+  animation: fadeUp 1s .6s both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Buttons */
+.primary {
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255,255,255,.55),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: buttonShine 4s infinite;
+}
+
+@keyframes buttonShine {
+  0%, 65% {
+    left: -120%;
+  }
+  85%, 100% {
+    left: 140%;
+  }
+}
+
+.primary:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(214,181,109,.2);
+}
+
+.secondary {
+  transition: .3s ease;
+}
+
+.secondary:hover {
+  transform: translateY(-4px);
+  border-color: #d6b56d;
+}
+
+/* Plan cards */
+.plan {
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  transition:
+    transform .45s cubic-bezier(.2,.8,.2,1),
+    border-color .3s,
+    box-shadow .3s;
+}
+
+.plan::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  top: -80px;
+  right: -80px;
+  background: radial-gradient(
+    circle,
+    rgba(214,181,109,.15),
+    transparent 70%
+  );
+  transition: .5s;
+}
+
+.plan:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(0,0,0,.4);
+}
+
+.plan:hover::after {
+  transform: scale(2);
+}
+
+/* Featured Premium pulse */
+.plan.featured {
+  animation: premiumPulse 4s ease-in-out infinite;
+}
+
+@keyframes premiumPulse {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(214,181,109,.08);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(214,181,109,.18);
+  }
+}
+
+/* Feature cards */
+.feature {
+  transition: .4s cubic-bezier(.2,.8,.2,1);
+}
+
+.feature:hover {
+  transform: translateY(-8px);
+  border-color: rgba(214,181,109,.5);
+}
+
+/* Floating cinematic light */
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(214,181,109,.08),
+    transparent 70%
+  );
+  right: 5%;
+  top: 35%;
+  animation: floatingLight 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatingLight {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-30px) scale(1.15);
+  }
+}
+
+/* Mobile optimization */
+@media(max-width:600px) {
+  .hero::after {
+    width: 220px;
+    height: 220px;
+    right: -50px;
+  }
+}<style>
